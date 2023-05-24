@@ -1,0 +1,352 @@
+{
+    "openapi": "3.0.3",
+    "info":{
+        "title":"TODO Tasks",
+        "description": "this is todo Tasks api's",
+        "version":"2.0.0",
+        "contact":{
+            "email":"rahul.rana.henceforth@gmail.com"
+        },
+        "license":{
+            "name":"Apache2.0",
+            "url":"https://apache.org"
+        }
+    },
+    "servers":[
+        {
+            "url":"http://localhost:8001",
+            "name":"local server"
+        },{
+            "url":"https://henceforthsolutions.com",
+            "name":"my company servers"
+        }
+    ],
+    "tags":[
+        {
+            "name":"Todo task",
+            "description":"todo task all api's"
+        }
+    ],
+    "paths":{
+        "/create-new-task":{
+            "post":{
+                "tags":[
+                    "Todo task"
+                ],
+                "summary":"create a new task",
+                "description":"Through this api you can create a new task",
+                "produces":{
+                    "types":"application/json"
+                },
+                "consumes":"application/json",
+                "requestBody":{
+                    "description": "Enter the required feilds",
+                    "content":{
+                       "application/json":{
+                         "schema":{
+                             "$ref":"#/components/schemas/User"
+                         }
+                       }
+                    }
+              },
+                "parameters":[],
+                "responses":{
+                    "200":{
+                        "description":"success/OK",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"client-side-error"
+                    },
+                    "404":{
+                        "description":"NOT Found"
+                    },
+                    "500":{
+                        "description":"servers-side-error"
+                    }
+                }
+            }
+        },
+        "/edit-task/{id}":{
+            "put":{
+                "tags":[
+                    "Todo task"
+                ],
+                "summary":"edit task",
+                "description":"edit the task that is allready created",
+                "produces":"application/json",
+                "consumes":"application/json",
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description": "edit the task",
+                        "schema":{
+                            "type": "string"
+                        },
+                        "required":"true"
+                    }
+                ],
+                "requestBody":{
+                    "description": "Enter the required feilds",
+                    "content":{
+                       "application/json":{
+                         "schema":{
+                             "$ref":"#/components/schemas/User"
+                         }
+                       }
+                    }
+              },
+                 "responses":{
+                    "200":{
+                        "description":"success/OK",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "400":{
+                        "description":"client-side-error"
+                    },
+                    "404":{
+                        "description":"NOT Found"
+                    },
+                    "500":{
+                        "description":"servers-side-error"
+                    }
+                }
+
+            }
+        },
+        "/delete-task/{id}":{
+            "put":{
+               "tags":[
+                 "Todo task"
+               ],
+               "summary":"delete the task",
+               "description":"hit those session which you want to delete",
+               "produces":"application/json",
+               "consumes":"application/json",
+               "parameters":[
+                 {
+                     "in":"path",
+                     "name":"id",
+                     "description": "edit the task",
+                     "schema":{
+                         "type": "string"
+                     },
+                     "required":"true"
+                 }
+               ],
+               "responses":{
+                 "200":{
+                     "description":"success/OK"
+                 },
+                 "400":{
+                     "description":"client-side-error"
+                 },
+                 "404":{
+                     "description":"NOT Found"
+                 },
+                 "500":{
+                     "description":"servers-side-error"
+                 }
+               }
+            }
+         },
+         "/read-delete-tasks":{
+            "get":{
+                "tags":[
+                    "Todo task"
+                ],
+                "summary":"read all deleted tasks",
+                "description":"read the all deleted tasks",
+                "produces":"application/json",
+                "responses":{
+                    "200":{
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/User"
+                                }
+                            }
+                        },
+                        "description":"success/OK"
+                    },
+                    "400":{
+                        "description":"client-side-error"
+                    },
+                    "404":{
+                        "description":"NOT Found"
+                    },
+                    "500":{
+                        "description":"servers-side-error"
+                    }
+                }
+            }
+         },
+         "/read-in-progress-tasks":{
+            "get":{
+                "tags":[
+                    "Todo task"
+                ],
+                "summary":"read progress tasks",
+                "description":"read the all tasks that is in the progress",
+                "produces":"application/json",
+                "responses":{
+                    "200":{
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/User"
+                                }
+                            }
+                        },
+                        "description":"success/OK"
+                    },
+                    "400":{
+                        "description":"client-side-error"
+                    },
+                    "404":{
+                        "description":"NOT Found"
+                    },
+                    "500":{
+                        "description":"servers-side-error"
+                    }
+                }
+            }
+         }, 
+          "/complete-task/{id}":{
+            "put":{
+               "tags":[
+                 "Todo task"
+               ],
+               "summary":"complete the task",
+               "description":"hit those session which you want to complete",
+               "produces":"application/json",
+               "consumes":"application/json",
+               "parameters":[
+                 {
+                     "in":"path",
+                     "name":"id",
+                     "description": "complete the task",
+                     "schema":{
+                         "type": "string"
+                     },
+                     "required":"true"
+                 }
+               ],
+               "responses":{
+                 "200":{
+                     "description":"success/OK"
+                 },
+                 "400":{
+                     "description":"client-side-error"
+                 },
+                 "404":{
+                     "description":"NOT Found"
+                 },
+                 "500":{
+                     "description":"servers-side-error"
+                 }
+               }
+            }
+         },
+         "/read-complete-task":{
+            "get":{
+                "tags":[
+                    "Todo task"
+                ],
+                "summary":"read progress tasks",
+                "description":"read the all tasks that is in the progress",
+                "produces":"application/json",
+                "responses":{
+                    "200":{
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "$ref":"#/components/schemas/User"
+                                }
+                            }
+                        },
+                        "description":"success/OK"
+                    },
+                    "400":{
+                        "description":"client-side-error"
+                    },
+                    "404":{
+                        "description":"NOT Found"
+                    },
+                    "500":{
+                        "description":"servers-side-error"
+                    }
+                }
+            }
+         },
+         "/read-task/{id}":{
+            "get":{
+                "tags":[
+                    "Todo task"
+                ],
+                "summary":"read the deleted completed and progress tasks",
+                "description":"read the data one by one of completed, deleted and progress tasks",
+                "produces":"application/json",
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "description":"enter the id to see the tasks details",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "required":"true"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"success/OK"
+                    },
+                    "400":{
+                        "description":"client-side-error"
+                    },
+                    "404":{
+                        "description":"NOT Found"
+                    },
+                    "500":{
+                        "description":"servers-side-error"
+                    }
+                }
+                
+            }
+         }
+    },
+    "components":{
+        "schemas":{
+            "User":{
+                "type":"object",
+                "properties":{
+                    "task_name":{
+                        "type":"string"
+                    },
+                    "date":{
+                        "type":"number",
+                        "example":"DD-MM-YYYY"
+                    },
+                    "descriptions":{
+                        "type":"string"
+                    }
+                }
+            }
+        }
+    }
+
+}
